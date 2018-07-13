@@ -40,6 +40,11 @@ $_documentContainer.innerHTML = `<dom-module id="shared-styles">
         color: #212121;
         font-size: 22px;
       }
+      
+      h2 {
+        padding: 0;
+        margin: 0;
+      }
     </style>
   </template>
 </dom-module>`;

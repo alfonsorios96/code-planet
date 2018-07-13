@@ -23,6 +23,25 @@ class CoursesView extends PolymerElement {
 
           padding: 10px;
         }
+        
+        paper-button {
+            width: 100%;
+            height: 54px;
+            background-color: #EC6C2D;
+            color: white;
+        }
+        
+        .stack {
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 20px;
+        }
+        
+        .stack span {
+            background-color: #4A9E75;
+            color: white;
+            padding: 10px;
+        }
       </style>
       
       <div class="card">
@@ -31,13 +50,24 @@ class CoursesView extends PolymerElement {
         <blackquote>
             Generar un perfil backend básico en desarrolladores que les permita asumir responsabilidades del lado de servicios; crear api rest, darles mantenimiento y publicarlas para su consumo.
         </blackquote>
+        <h3>Costos</h3>
+        <blackquote>
+            <ul>
+                <li>Curso completo: $8,000. Pagando $2,000 quincenales, siendo el primer pago antes del primer módulo</li>
+                <li>Curso por módulo: $2,000 por concepto de inscripción y $2,000 el módulo correspondiente.</li>
+                <li>El pago de inscripción es único por alumno y te da derecho a inscribirte a cualquier cantidad de módulo que quieras</li>
+                <li>El pago del módulo correspondiente se realiza en dos partes, los primeros $1,000 tienen que ser antes de la clase.</li>
+                <li>Si no llegas al curso, no tienes que pagar los otros $1,000</li>
+                <li>Si tu evaluación es excelente (revisar la metodología de evalución), se te hace un descuento final de $500.</li>
+            </ul>
+        </blackquote>
         <h3>Stack tecnológico</h3>
-        <ul>
-            <li>JavaScript (ECMAScript 7) </li>
-            <li>Git (GitHub)</li>
-            <li>NodeJS 8</li>
-            <li>Express 4</li>
-        </ul>
+        <div class="stack">
+        <span>JavaScript (ECMAScript 7) </span>
+            <span>Git (GitHub)</span>
+            <span>NodeJS 8</span>
+            <span>Express 4</span>
+        </div>
         <paper-button id="backend" on-click="selectCourse">Revisar módulos</paper-button>
       </div>
       
