@@ -52,14 +52,11 @@ class CoursesView extends PolymerElement {
         </blackquote>
         <h3>Costos</h3>
         <blackquote>
-            <ul>
-                <li>Curso completo: $8,000. Pagando $2,000 quincenales, siendo el primer pago antes del primer módulo</li>
-                <li>Curso por módulo: $2,000 por concepto de inscripción y $2,000 el módulo correspondiente.</li>
-                <li>El pago de inscripción es único por alumno y te da derecho a inscribirte a cualquier cantidad de módulo que quieras</li>
-                <li>El pago del módulo correspondiente se realiza en dos partes, los primeros $1,000 tienen que ser antes de la clase.</li>
-                <li>Si no llegas al curso, no tienes que pagar los otros $1,000</li>
-                <li>Si tu evaluación es excelente (revisar la metodología de evalución), se te hace un descuento final de $500.</li>
-            </ul>
+            Curso completo: $8,000 MXN
+        </blackquote>
+        <h3>Duración total</h3>
+        <blackquote>
+            20 horas
         </blackquote>
         <h3>Stack tecnológico</h3>
         <div class="stack">
@@ -75,6 +72,10 @@ class CoursesView extends PolymerElement {
             <div course="backend">
                 <div class="card">
                   <h2>Módulo I - Control de versiones</h2>
+                  <h3>Costo</h3>
+                  <blackquote>
+                      $2,000 MXN
+                  </blackquote>
                   <h3>Duración</h3>
                   <blackquote>
                       4 horas
@@ -91,9 +92,13 @@ class CoursesView extends PolymerElement {
                 </div>
                 <div class="card">
                   <h2>Módulo II - JavaScript ES7</h2>
+                  <h3>Costo</h3>
+                  <blackquote>
+                      $3,000 MXN
+                    </blackquote>
                   <h3>Duración</h3>
                   <blackquote>
-                      4 horas
+                      6 horas
                   </blackquote>
                   <h3>Temario</h3>
                   <ul>
@@ -108,9 +113,13 @@ class CoursesView extends PolymerElement {
                 </div>
                 <div class="card">
                   <h2>Módulo III - NodeJS</h2>
+                  <h3>Costo</h3>
+                  <blackquote>
+                      $3,000 MXN
+                  </blackquote>
                   <h3>Duración</h3>
                   <blackquote>
-                      4 horas
+                      6 horas
                   </blackquote>
                   <h3>Temario</h3>
                   <ul>
@@ -119,10 +128,15 @@ class CoursesView extends PolymerElement {
                       <li>Módulo FileSystem</li>
                       <li>Importación / Exportación</li>
                       <li>Dependencias y devDependencies (manejo de NPM y YARN)</li>
+                      <li>Publicación del módulo node con Heroku</li>
                   </ul>
                 </div>
                 <div class="card">
                   <h2>Módulo IV - API Rest</h2>
+                  <h3>Costo</h3>
+                  <blackquote>
+                      $2,000 MXN
+                  </blackquote>
                   <h3>Duración</h3>
                   <blackquote>
                       4 horas

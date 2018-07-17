@@ -3266,6 +3266,12 @@ gh-got@^6.0.0:
     got "^7.0.0"
     is-plain-obj "^1.1.0"
 
+git@^0.1.5:
+  version "0.1.5"
+  resolved "https://globaldevtools.bbva.com:443/artifactory/api/npm/npm-repo/git/-/git-0.1.5.tgz?dl=https://registry.yarnpkg.com/git/-/git-0.1.5.tgz#9ef62df93f851c27542143bf52d1c68b1017ca15"
+  dependencies:
+    mime "1.2.9"
+
 github-username@^4.0.0:
   version "4.1.0"
   resolved "https://globaldevtools.bbva.com:443/artifactory/api/npm/npm-repo/github-username/-/github-username-4.1.0.tgz?dl=https://registry.yarnpkg.com/github-username/-/github-username-4.1.0.tgz#cbe280041883206da4212ae9e4b5f169c30bf417"
@@ -4626,6 +4632,10 @@ mime-types@^2.1.12, mime-types@~2.1.17, mime-types@~2.1.18:
 mime@1.2.11:
   version "1.2.11"
   resolved "https://globaldevtools.bbva.com:443/artifactory/api/npm/npm-repo/mime/-/mime-1.2.11.tgz?dl=https://registry.yarnpkg.com/mime/-/mime-1.2.11.tgz#58203eed86e3a5ef17aed2b7d9ebd47f0a60dd10"
+
+mime@1.2.9:
+  version "1.2.9"
+  resolved "https://globaldevtools.bbva.com:443/artifactory/api/npm/npm-repo/mime/-/mime-1.2.9.tgz?dl=https://registry.yarnpkg.com/mime/-/mime-1.2.9.tgz#009cd40867bd35de521b3b966f04e2f8d4d13d09"
 
 mime@1.4.1:
   version "1.4.1"
