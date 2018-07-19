@@ -7,8 +7,9 @@
       "name": "Control de versiones",
       "price": "3000",
       "duration": "6",
+      "icon": "git-square-brands.svg",
       "courses": [
-        "nodejs"
+        "NodeJS"
       ],
       "summary": [
         "Repositorios",
@@ -23,8 +24,9 @@
       "name": "JavaScript ES7",
       "price": "3000",
       "duration": "6",
+      "icon": "js-brands.svg",
       "courses": [
-        "nodejs"
+        "NodeJS"
       ],
       "summary": [
         "Variables",
@@ -40,8 +42,9 @@
       "name": "NodeJS",
       "price": "3000",
       "duration": "6",
+      "icon": "node-js-brands.svg",
       "courses": [
-        "nodejs"
+        "NodeJS"
       ],
       "summary": [
         "Environment",
@@ -56,8 +59,9 @@
       "name": "API Rest",
       "price": "2000",
       "duration": "4",
+      "icon": "express.png",
       "courses": [
-        "nodejs"
+        "NodeJS"
       ],
       "summary": [
         "Códigos HTTP",

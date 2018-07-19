@@ -108,6 +108,7 @@ class MyApp extends PolymerElement {
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
             <a name="home" href="[[rootPath]]home">Inicio</a>
             <a name="courses" href="[[rootPath]]courses">Cursos</a>
+            <a name="modules" href="[[rootPath]]modules">Módulos de aprendizaje</a>
             <a name="calendar" href="[[rootPath]]calendar">Calendario y ubicación</a>
             <a name="method" href="[[rootPath]]method">Metodología e inversión</a>
             <a name="contact" href="[[rootPath]]contact">¿Quiénes somos?</a>
@@ -126,7 +127,8 @@ class MyApp extends PolymerElement {
 
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
             <home-view name="home"></home-view>
-            <courses-view name="courses" courses="[[courses]]" modules="[[modules]]"></courses-view>
+            <courses-view name="courses" courses="[[courses]]"></courses-view>
+            <modules-view name="modules" modules="[[modules]]"></modules-view>
             <methodology-view name="method"></methodology-view>
             <contact-view name="contact"></contact-view>
             <calendar-view name="calendar"></calendar-view>
@@ -209,7 +211,7 @@ class MyApp extends PolymerElement {
     // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'home';
-    } else if ([ 'home', 'courses', 'contact', 'method', 'calendar' ].indexOf(page) !== -1) {
+    } else if ([ 'home', 'courses', 'contact', 'method', 'calendar', 'modules' ].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -232,6 +234,9 @@ class MyApp extends PolymerElement {
         break;
       case 'courses':
         import('./courses-view.js');
+        break;
+      case 'modules':
+        import('./modules-view.js');
         break;
       case 'contact':
         import('./contact-view.js');

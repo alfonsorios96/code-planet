@@ -19,8 +19,8 @@ class CalendarView extends PolymerElement {
 
     .calendar {
         display: flex;
-        flex-direction: row;
         justify-content: space-between;
+        flex-wrap: wrap;
     }
 
     .module {
@@ -28,6 +28,7 @@ class CalendarView extends PolymerElement {
         height: 300px;
         text-align: center;
         border: 2px solid #EC6C2D;
+        margin: 5px;
     }
 
     .header {

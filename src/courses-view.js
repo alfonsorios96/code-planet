@@ -9,8 +9,8 @@
  */
 
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@polymer/iron-pages/iron-pages.js';
-import '@polymer/iron-selector/iron-selector.js';
+import '@polymer/iron-icons/iron-icons.js';
+import '@polymer/iron-icon/iron-icon.js';
 import './shared-styles.js';
 
 class CoursesView extends PolymerElement {
@@ -23,188 +23,79 @@ class CoursesView extends PolymerElement {
         padding: 10px;
     }
     
-    .item {
-        text-align: center;
-    }
-    
     li {
         list-style: none;
     }
     
-    .container {
-        display: flex;
-    }
-    
-    .courses {
-        width: 30%;
-    }
-    
-    .modules {
-        width: 70%;
-    }
-    
-    .modules-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-    }
-
-    .stack {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .stack span {
-        background-color: #4A9E75;
-        color: white;
-        padding: 5px;
-        margin-bottom: 10px;
-    }
-    
-    .header {
-        background-color: #EC6C2D;
-        color: white;
-        margin: -16px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-bottom: 20px;
+    iron-icon {
+        --iron-icon-width: 32px;
+        --iron-icon-height: 32px;
     }
     
     .header h2 {
         padding: 0;
         margin: 0;
     }
-
-    .body {
-        display: flex;
-        justify-content: space-between;
-        width: 300px;
-    }
     
-    @media only screen and (max-width: 1350px) {
-        .container {
-          display: flex;
-          flex-direction: column;
-      }
-      
-      .courses {
-        width: 100%;
-      }
-      
-      .modules {
-        width: 100%;
-      }
-      
-      .stack {
+    .row {
         display: flex;
         justify-content: space-between;
     }
     
-    .body {
-        display: flex;
-        justify-content: space-between;
-    }
+    .item {
+        text-align: center;
     }
 </style>
 
-<div class="container">
-<div class="courses">
 <h2>Cursos</h2>
 
 <template is="dom-repeat" items="[[courses]]" as="courseIterable">
     <div class="card">
-        <h2>[[courseIterable.name]]</h2>
+         <h2>[[courseIterable.name]]</h2>
         <h3>Objetivo</h3>
         <blackquote>
+            <iron-icon icon="icons:assignment"></iron-icon>
             [[courseIterable.goal]]
         </blackquote>
+        <div class="row">
+        <div class="item">
         <h3>Inversión</h3>
         <blackquote>
-            $[[courseIterable.price]] MXN
+            <iron-icon icon="icons:credit-card"></iron-icon>
+             [[courseIterable.price]] MXN
         </blackquote>
-        <h3>Duración total</h3>
+</div>
+<div class="item">
+<h3>Duración total</h3>
         <blackquote>
+            <iron-icon icon="icons:watch-later"></iron-icon>
             [[courseIterable.duration]] horas
         </blackquote>
-        <h3>Stack tecnológico</h3>
-        <div class="stack">
+</div>
+<div class="item">
+<h3>Stack tecnológico</h3>
+        <ul>
             <template is="dom-repeat" items="[[courseIterable.stack]]" as="label">
-                <span>[[label]]</span>
+                <span>
+                <iron-icon src="images/[[label.icon]]"></iron-icon>
+</span>
             </template>
-        </div>
-        <div id$="[[courseIterable.tag]]" class="button" on-click="selectCourse">Ver más...</div>
+        </ul>
+</div>
+</div>
+    
+    
+    
+    
     </div>
 </template>
-</div>
-
-<div class="modules">
-<h2>Módulos</h2>
-
-<div class="modules-container">
-    <template is="dom-repeat" items="[[modules]]" as="module">
-        <div class="card">
-            <div class="header">
-                <h2>[[module.name]]</h2>
-            </div>
-            <div class="body">
-                <div class="info item">
-                    <h3>Inversión</h3>
-                    <blackquote>
-                        $[[module.price]] MXN
-                    </blackquote>
-                    <h3>Duración</h3>
-                    <blackquote>
-                        [[module.duration]] horas
-                    </blackquote>
-                </div>
-                <div class="summary item">
-                    <h3>Temario</h3>
-                    <ul>
-                        <template is="dom-repeat" items="[[module.summary]]" as="topic">
-                            <li>[[topic]]</li>
-                        </template>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </template>
-</div>
-</div>
-</div>
     `;
   }
   
   static get properties() {
     return {
-      course: {
-        type: String,
-        value: '',
-        observer: 'resetModulesVisibility'
-      },
-      courses: Array,
-      modules: Array
+      courses: Array
     };
-  }
-  
-  selectCourse(event) {
-    const course = event.currentTarget.getAttribute('id');
-    if (this.course === course) {
-      this.set('course', '');
-    } else {
-      this.set('course', course);
-    }
-  }
-  
-  resetModulesVisibility() {
-    const buttons = this.shadowRoot.querySelectorAll('.button');
-    for (const button of buttons) {
-      if (button.getAttribute('id') === this.course) {
-        button.innerText = 'Ver menos...';
-      } else {
-        button.innerText = 'Ver más...';
-      }
-    }
   }
 }
 

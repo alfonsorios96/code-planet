@@ -9,6 +9,7 @@
  */
 
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
+import '@polymer/iron-icon/iron-icon.js';
 import './shared-styles.js';
 
 class ContactView extends PolymerElement {
@@ -18,6 +19,10 @@ class ContactView extends PolymerElement {
     :host {
         display: block;
         padding: 10px;
+    }
+    
+    li {
+        list-style: none;
     }
 
     h2 {
@@ -75,10 +80,16 @@ class ContactView extends PolymerElement {
         <h3>CEO and Founder</h3>
         <p>Instructor apasionado por la vida, y las nuevas tecnologías. Trabaja actualmente para BBVA como desarrollador
             Front-end y para Centraal Academy como instructor de Frontend Avanzado con Polymer</p>
-        <ul>
-            <li>Linkedin: <a href="www.linkedin.com/in/manuel-alfonso-rios-medellín-43017b161">malforime</a></li>
+            <h4>Redes sociales</h4>
+                    <span>
+                <a href="www.linkedin.com/in/manuel-alfonso-rios-medellín-43017b161">
+                <iron-icon src="images/linkedin-brands.svg"></iron-icon>
+</a></span>
+<span>
+                <a href="https://github.com/alfonsorios96">
+                <iron-icon src="images/github-brands.svg"></iron-icon>
+</a></span>
     </div>
-    </ul>
 </div>
 
 <div class="card profile">
@@ -90,10 +101,11 @@ class ContactView extends PolymerElement {
         <h3>CMO</h3>
         <p>Estudiante de la carrera de psicología por parte del CICS Santo Tomás del IPN, apasionada de los perros y
             trabajo en equipos multidisciplinarios, su goal es el éxito en todo aquello que se propone.</p>
-        <ul>
-            <li>Facebook: <a href="https://www.facebook.com/jaqeelin.osorio">Jaqui</a></li>
+        <span>
+                <a href="https://www.facebook.com/jaqeelin.osorio">
+                <iron-icon src="images/facebook-square-brands.svg"></iron-icon>
+</a></span>
     </div>
-    </ul>
 </div>
     `;
   }
