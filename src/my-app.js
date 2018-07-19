@@ -21,6 +21,7 @@ import '@polymer/app-route/app-route.js';
 import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-selector/iron-selector.js';
 import '@polymer/paper-icon-button/paper-icon-button.js';
+import '@polymer/iron-ajax/iron-ajax.js';
 import './my-icons.js';
 
 // Gesture events like tap and track generated from touch will not be
@@ -82,6 +83,15 @@ class MyApp extends PolymerElement {
             height: 100px;
         }
       </style>
+      
+      <iron-ajax
+      id="dp"
+      on-response="_responseAjax"
+      on-error="_responseError"
+      on-loading="_monitoringAsyncAjax"
+      content-type="application/json"
+      handle-as="json"
+      debounce-duration="300"></iron-ajax>
 
       <app-location route="{{route}}" url-space-regex="^[[rootPath]]">
       </app-location>
@@ -99,7 +109,7 @@ class MyApp extends PolymerElement {
             <a name="home" href="[[rootPath]]home">Inicio</a>
             <a name="courses" href="[[rootPath]]courses">Cursos</a>
             <a name="calendar" href="[[rootPath]]calendar">Calendario y ubicación</a>
-            <a name="method" href="[[rootPath]]method">Metodología y precios</a>
+            <a name="method" href="[[rootPath]]method">Metodología e inversión</a>
             <a name="contact" href="[[rootPath]]contact">¿Quiénes somos?</a>
           </iron-selector>
         </app-drawer>
@@ -116,7 +126,7 @@ class MyApp extends PolymerElement {
 
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
             <home-view name="home"></home-view>
-            <courses-view name="courses"></courses-view>
+            <courses-view name="courses" courses="[[courses]]" modules="[[modules]]"></courses-view>
             <methodology-view name="method"></methodology-view>
             <contact-view name="contact"></contact-view>
             <calendar-view name="calendar"></calendar-view>
@@ -135,7 +145,8 @@ class MyApp extends PolymerElement {
         observer: '_pageChanged'
       },
       routeData: Object,
-      subroute: Object
+      courses: Array,
+      modules: Array
     };
   }
   
@@ -143,6 +154,52 @@ class MyApp extends PolymerElement {
     return [
       '_routePageChanged(routeData.page)'
     ];
+  }
+  
+  connectedCallback() {
+    super.connectedCallback();
+    this.getCourses();
+    setTimeout(() => {
+      this.getModules();
+    }, 1000);
+  }
+  
+  getCourses() {
+    this._generateRequest('data/courses.json');
+  }
+  
+  getModules() {
+    this._generateRequest('data/modules.json');
+  }
+  
+  _generateRequest(url, method = 'GET', body = '') {
+    this.$.dp.body = body;
+    this.$.dp.method = method;
+    this.$.dp.url = url;
+    this.$.dp.generateRequest();
+  }
+  
+  _responseAjax() {
+    const payload = this.$.dp.lastResponse;
+    switch (payload.info.data) {
+      case 'courses':
+        this.set('courses', null);
+        this.set('courses', payload.response);
+        break;
+      case 'modules':
+        this.set('modules', null);
+        this.set('modules', payload.response);
+        break;
+    }
+  }
+  
+  _responseError() {
+    const error = this.$.dp.lastError;
+  }
+  
+  _monitoringAsyncAjax(event) {
+    const ajaxProcessing = event.detail;
+    this.set('loadingAjax', ajaxProcessing);
   }
   
   _routePageChanged(page) {

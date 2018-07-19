@@ -27,13 +27,14 @@ class CalendarView extends PolymerElement {
         width: 180px;
         height: 300px;
         text-align: center;
-        border: 1px solid #f49034;
+        border: 2px solid #EC6C2D;
     }
 
     .header {
         padding-top: 10px;
+        margin-bottom: 10px;
         width: 100%;
-        background-color: #f4d06c;
+        background-color: #EC6C2D;
         height: 80px;
         color: white;
         vertical-align: middle;
@@ -44,6 +45,10 @@ class CalendarView extends PolymerElement {
       flex-direction: column;
       align-items: center;
   justify-content: center;
+    }
+    
+    .row {
+      margin-top: 15px;
     }
 </style>
 <div class="card">
@@ -60,7 +65,11 @@ class CalendarView extends PolymerElement {
               </div>
               <div class="row">
                 <iron-icon icon="icons:home"></iron-icon>
-                Cupo restante: 6 personas
+                Cupo: 6 personas
+              </div>
+              <div class="row">
+                <iron-icon icon="icons:watch-later"></iron-icon>
+                10h00 - 14h00
               </div>
             </div>
         </div>
@@ -68,24 +77,64 @@ class CalendarView extends PolymerElement {
             <div class="header">
                 <h3>ES7 JavaScript</h3>
             </div>
-
+            <div class="info">
+              <div class="row">
+                <iron-icon icon="icons:event"></iron-icon>
+                11/Agosto/2018
+              </div>
+              <div class="row">
+                <iron-icon icon="icons:home"></iron-icon>
+                Cupo: 6 personas
+              </div>
+              <div class="row">
+                <iron-icon icon="icons:watch-later"></iron-icon>
+                10h00 - 14h00
+              </div>
+            </div>
         </div>
         <div class="module">
             <div class="header">
                 <h3 class="header">NodeJS 8</h3>
+            </div>
+            <div class="info">
+              <div class="row">
+                <iron-icon icon="icons:event"></iron-icon>
+                11/Agosto/2018
+              </div>
+              <div class="row">
+                <iron-icon icon="icons:home"></iron-icon>
+                Cupo: 6 personas
+              </div>
+              <div class="row">
+                <iron-icon icon="icons:watch-later"></iron-icon>
+                10h00 - 14h00
+              </div>
             </div>
         </div>
         <div class="module">
             <div class="header">
                 <h3 class="header">API Rest con Express</h3>
             </div>
+            <div class="info">
+              <div class="row">
+                <iron-icon icon="icons:event"></iron-icon>
+                11/Agosto/2018
+              </div>
+              <div class="row">
+                <iron-icon icon="icons:home"></iron-icon>
+                Cupo: 6 personas
+              </div>
+              <div class="row">
+                <iron-icon icon="icons:watch-later"></iron-icon>
+                10h00 - 14h00
+              </div>
+            </div>
         </div>
-
     </div>
 </div>
 
 <div class="card">
-    <h2>Nuestra sede</h2>
+    <h2>Sede Postal</h2>
     <blackquote>
         Reembolsos 48 BIS. Col Postal, CP. 03410, Ciudad de México, México. Planta Baja
     </blackquote>

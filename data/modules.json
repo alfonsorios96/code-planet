@@ -1,0 +1,72 @@
+{
+  "info": {
+    "data": "modules"
+  },
+  "response": [
+    {
+      "name": "Control de versiones",
+      "price": "3000",
+      "duration": "6",
+      "courses": [
+        "nodejs"
+      ],
+      "summary": [
+        "Repositorios",
+        "Flujo para arquitecturas remote",
+        "Branches",
+        "Resolución de conflictos",
+        "Tags",
+        "Comandos (add, commit, branch, remote, push, merge, fetch, etc…)"
+      ]
+    },
+    {
+      "name": "JavaScript ES7",
+      "price": "3000",
+      "duration": "6",
+      "courses": [
+        "nodejs"
+      ],
+      "summary": [
+        "Variables",
+        "Condicionales",
+        "Iteradores",
+        "Objetos complejos",
+        "Arrow functions",
+        "Clases",
+        "Módulos"
+      ]
+    },
+    {
+      "name": "NodeJS",
+      "price": "3000",
+      "duration": "6",
+      "courses": [
+        "nodejs"
+      ],
+      "summary": [
+        "Environment",
+        "Scripts",
+        "Módulo FileSystem",
+        "Importación / Exportación",
+        "Dependencias y devDependencies (manejo de NPM y YARN)",
+        "Publicación del módulo nodeJS con Heroku"
+      ]
+    },
+    {
+      "name": "API Rest",
+      "price": "2000",
+      "duration": "4",
+      "courses": [
+        "nodejs"
+      ],
+      "summary": [
+        "Códigos HTTP",
+        "Métodos GET, PUT, DELETE, POST",
+        "Query Params",
+        "Manejo de excepciones",
+        "Manejo de archivos como almacenamiento",
+        "Objetos Request/Response"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "info": {
+    "data": "courses"
+  },
+  "response": [
+    {
+      "tag": "nodejs",
+      "name": "Backend NodeJS",
+      "goal": "Crear api rest, darles mantenimiento y publicarlas para su consumo.",
+      "price": 11000,
+      "duration": 20,
+      "stack": [
+        "JavaScript (ECMAScript 7)",
+        "Git (GitHub)",
+        "NodeJS 8",
+        "Express 4"
+      ]
+    }
+  ]
+}

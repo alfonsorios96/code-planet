@@ -9,7 +9,6 @@
  */
 
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@polymer/paper-button/paper-button.js';
 import '@polymer/iron-pages/iron-pages.js';
 import '@polymer/iron-selector/iron-selector.js';
 import './shared-styles.js';
@@ -18,141 +17,161 @@ class CoursesView extends PolymerElement {
   static get template() {
     return html`
       <style include="shared-styles">
-        :host {
-          display: block;
+    :host {
+        display: block;
 
-          padding: 10px;
-        }
-        
-        paper-button {
-            width: 100%;
-            height: 54px;
-            background-color: #EC6C2D;
-            color: white;
-        }
-        
-        .stack {
+        padding: 10px;
+    }
+    
+    .item {
+        text-align: center;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    .container {
+        display: flex;
+    }
+    
+    .courses {
+        width: 30%;
+    }
+    
+    .modules {
+        width: 70%;
+    }
+    
+    .modules-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .stack {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .stack span {
+        background-color: #4A9E75;
+        color: white;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+    
+    .header {
+        background-color: #EC6C2D;
+        color: white;
+        margin: -16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .header h2 {
+        padding: 0;
+        margin: 0;
+    }
+
+    .body {
+        display: flex;
+        justify-content: space-between;
+        width: 300px;
+    }
+    
+    @media only screen and (max-width: 1350px) {
+        .container {
           display: flex;
-          justify-content: space-between;
-          margin-bottom: 20px;
-        }
-        
-        .stack span {
-            background-color: #4A9E75;
-            color: white;
-            padding: 10px;
-        }
-      </style>
+          flex-direction: column;
+      }
       
-      <div class="card">
-        <h2>Backend</h2>
+      .courses {
+        width: 100%;
+      }
+      
+      .modules {
+        width: 100%;
+      }
+      
+      .stack {
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .body {
+        display: flex;
+        justify-content: space-between;
+    }
+    }
+</style>
+
+<div class="container">
+<div class="courses">
+<h2>Cursos</h2>
+
+<template is="dom-repeat" items="[[courses]]" as="courseIterable">
+    <div class="card">
+        <h2>[[courseIterable.name]]</h2>
         <h3>Objetivo</h3>
         <blackquote>
-            Generar un perfil backend básico en desarrolladores que les permita asumir responsabilidades del lado de servicios; crear api rest, darles mantenimiento y publicarlas para su consumo.
+            [[courseIterable.goal]]
         </blackquote>
-        <h3>Costos</h3>
+        <h3>Inversión</h3>
         <blackquote>
-            Curso completo: $8,000 MXN
+            $[[courseIterable.price]] MXN
         </blackquote>
         <h3>Duración total</h3>
         <blackquote>
-            20 horas
+            [[courseIterable.duration]] horas
         </blackquote>
         <h3>Stack tecnológico</h3>
         <div class="stack">
-        <span>JavaScript (ECMAScript 7) </span>
-            <span>Git (GitHub)</span>
-            <span>NodeJS 8</span>
-            <span>Express 4</span>
+            <template is="dom-repeat" items="[[courseIterable.stack]]" as="label">
+                <span>[[label]]</span>
+            </template>
         </div>
-        <paper-button id="backend" on-click="selectCourse">Revisar módulos</paper-button>
-      </div>
-      
-      <iron-pages selected="[[course]]" attr-for-selected="course" role="main">
-            <div course="backend">
-                <div class="card">
-                  <h2>Módulo I - Control de versiones</h2>
-                  <h3>Costo</h3>
-                  <blackquote>
-                      $2,000 MXN
-                  </blackquote>
-                  <h3>Duración</h3>
-                  <blackquote>
-                      4 horas
-                  </blackquote>
-                  <h3>Temario</h3>
-                  <ul>
-                      <li>Repositorios</li>
-                      <li>Flujo para arquitecturas remote</li>
-                      <li>Branches</li>
-                      <li>Resolución de conflictos</li>
-                      <li>Tags</li>
-                      <li>Comandos (add, commit, branch, remote, push, merge, fetch, etc…)</li>
-                  </ul>
-                </div>
-                <div class="card">
-                  <h2>Módulo II - JavaScript ES7</h2>
-                  <h3>Costo</h3>
-                  <blackquote>
-                      $3,000 MXN
+        <div id$="[[courseIterable.tag]]" class="button" on-click="selectCourse">Ver más...</div>
+    </div>
+</template>
+</div>
+
+<div class="modules">
+<h2>Módulos</h2>
+
+<div class="modules-container">
+    <template is="dom-repeat" items="[[modules]]" as="module">
+        <div class="card">
+            <div class="header">
+                <h2>[[module.name]]</h2>
+            </div>
+            <div class="body">
+                <div class="info item">
+                    <h3>Inversión</h3>
+                    <blackquote>
+                        $[[module.price]] MXN
                     </blackquote>
-                  <h3>Duración</h3>
-                  <blackquote>
-                      6 horas
-                  </blackquote>
-                  <h3>Temario</h3>
-                  <ul>
-                      <li>Variables</li>
-                      <li>Condicionales</li>
-                      <li>Iteradores</li>
-                      <li>Objetos complejos</li>
-                      <li>Arrow functions</li>
-                      <li>Clases</li>
-                      <li>Módulos</li>
-                  </ul>
+                    <h3>Duración</h3>
+                    <blackquote>
+                        [[module.duration]] horas
+                    </blackquote>
                 </div>
-                <div class="card">
-                  <h2>Módulo III - NodeJS</h2>
-                  <h3>Costo</h3>
-                  <blackquote>
-                      $3,000 MXN
-                  </blackquote>
-                  <h3>Duración</h3>
-                  <blackquote>
-                      6 horas
-                  </blackquote>
-                  <h3>Temario</h3>
-                  <ul>
-                      <li>Environment</li>
-                      <li>Scripts</li>
-                      <li>Módulo FileSystem</li>
-                      <li>Importación / Exportación</li>
-                      <li>Dependencias y devDependencies (manejo de NPM y YARN)</li>
-                      <li>Publicación del módulo node con Heroku</li>
-                  </ul>
-                </div>
-                <div class="card">
-                  <h2>Módulo IV - API Rest</h2>
-                  <h3>Costo</h3>
-                  <blackquote>
-                      $2,000 MXN
-                  </blackquote>
-                  <h3>Duración</h3>
-                  <blackquote>
-                      4 horas
-                  </blackquote>
-                  <h3>Temario</h3>
-                  <ul>
-                      <li>Códigos HTTP</li>
-                      <li>Métodos GET, PUT, DELETE, POST</li>
-                      <li>Query Params</li>
-                      <li>Manejo de excepciones</li>
-                      <li>Manejo de archivos como almacenamiento</li>
-                      <li>Objetos Request/Response</li>
-                  </ul>
+                <div class="summary item">
+                    <h3>Temario</h3>
+                    <ul>
+                        <template is="dom-repeat" items="[[module.summary]]" as="topic">
+                            <li>[[topic]]</li>
+                        </template>
+                    </ul>
                 </div>
             </div>
-          </iron-pages>
+        </div>
+    </template>
+</div>
+</div>
+</div>
     `;
   }
   
@@ -162,7 +181,9 @@ class CoursesView extends PolymerElement {
         type: String,
         value: '',
         observer: 'resetModulesVisibility'
-      }
+      },
+      courses: Array,
+      modules: Array
     };
   }
   
@@ -176,12 +197,12 @@ class CoursesView extends PolymerElement {
   }
   
   resetModulesVisibility() {
-    const buttons = this.shadowRoot.querySelectorAll('paper-button');
+    const buttons = this.shadowRoot.querySelectorAll('.button');
     for (const button of buttons) {
       if (button.getAttribute('id') === this.course) {
-        button.innerText = 'Ocultar Módulos';
+        button.innerText = 'Ver menos...';
       } else {
-        button.innerText = 'Mostrar Módulos';
+        button.innerText = 'Ver más...';
       }
     }
   }
