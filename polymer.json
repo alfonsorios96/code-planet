@@ -2,12 +2,23 @@
   "entrypoint": "index.html",
   "shell": "src/my-app.js",
   "sources": [
+    "data/**/*",
     "images/**/*",
-    "node_modules/@polymer",
-    "data/*"
+    "src/**/*"
+  ],
+  "fragments": [
+    "src/calendar-view.js",
+    "src/contact-view.js",
+    "src/courses-view.js",
+    "src/home-view.js",
+    "src/methodology-view.js",
+    "src/modules-view.js",
+    "src/my-view404.js"
   ],
   "extraDependencies": [
-    "manifest.json"
+    "manifest.json",
+    "node_modules/@webcomponents/**",
+    "node_modules/@polymer/**"
   ],
   "builds": [
     {
