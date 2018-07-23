@@ -70,7 +70,6 @@ class ModulesView extends PolymerElement {
     <template is="dom-repeat" items="[[modules]]" as="module">
         <div class="card">
             <div class="header">
-                <iron-icon src="images/[[module.icon]]"></iron-icon>
                 <h2>[[module.name]]</h2>
             </div>
             <div class="body">

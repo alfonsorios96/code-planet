@@ -69,7 +69,11 @@ class CoursesView extends PolymerElement {
 <h3>Duración total</h3>
         <blackquote>
             <iron-icon icon="icons:watch-later"></iron-icon>
-            [[courseIterable.duration]] horas
+            Curso: [[courseIterable.duration]] horas
+        </blackquote>
+        <blackquote>
+            <iron-icon icon="icons:important-devices"></iron-icon>
+            Mentoría: [[courseIterable.mentoring]] horas
         </blackquote>
 </div>
 <div class="item">
