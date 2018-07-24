@@ -24,8 +24,7 @@ class CalendarView extends PolymerElement {
     }
 
     .module {
-        width: 180px;
-        height: 300px;
+        width: 250px;
         text-align: center;
         border: 2px solid #EC6C2D;
         margin: 5px;
@@ -46,6 +45,7 @@ class CalendarView extends PolymerElement {
       flex-direction: column;
       align-items: center;
   justify-content: center;
+  padding: 5px;
     }
     
     .row {
@@ -53,84 +53,33 @@ class CalendarView extends PolymerElement {
     }
 </style>
 <div class="card">
-    <h2>Curso de Backend</h2>
     <div class="calendar">
-        <div class="module">
-            <div class="header">
-                <h3>Control de versiones Git</h3>
-            </div>
-            <div class="info">
-              <div class="row">
-                <iron-icon icon="icons:event"></iron-icon>
-                11/Agosto/2018
+        <template is="dom-repeat" items="[[calendar]]" as="element">
+              <div class="module">
+                  <div class="header">
+                      <h3>[[element.title]]</h3>
+                  </div>
+                  <div class="info">
+                    <div class="row">
+                      <iron-icon icon="icons:event"></iron-icon>
+                      [[element.date]]
+                    </div>
+                    <div class="row">
+                      <iron-icon icon="icons:home"></iron-icon>
+                      Cupo: [[element.number]] personas
+                    </div>
+                    <div class="row">
+                      <iron-icon icon="icons:watch-later"></iron-icon>
+                      [[element.begin]] - [[element.end]]
+                    </div>
+                    <div class="row">
+                      <template is="dom-repeat" items="[[element.courses]]" as="course">
+                        [[course]]
+</template>
+                    </div>
+                  </div>
               </div>
-              <div class="row">
-                <iron-icon icon="icons:home"></iron-icon>
-                Cupo: 6 personas
-              </div>
-              <div class="row">
-                <iron-icon icon="icons:watch-later"></iron-icon>
-                10h00 - 14h00
-              </div>
-            </div>
-        </div>
-        <div class="module">
-            <div class="header">
-                <h3>ES7 JavaScript</h3>
-            </div>
-            <div class="info">
-              <div class="row">
-                <iron-icon icon="icons:event"></iron-icon>
-                11/Agosto/2018
-              </div>
-              <div class="row">
-                <iron-icon icon="icons:home"></iron-icon>
-                Cupo: 6 personas
-              </div>
-              <div class="row">
-                <iron-icon icon="icons:watch-later"></iron-icon>
-                10h00 - 14h00
-              </div>
-            </div>
-        </div>
-        <div class="module">
-            <div class="header">
-                <h3 class="header">NodeJS 8</h3>
-            </div>
-            <div class="info">
-              <div class="row">
-                <iron-icon icon="icons:event"></iron-icon>
-                11/Agosto/2018
-              </div>
-              <div class="row">
-                <iron-icon icon="icons:home"></iron-icon>
-                Cupo: 6 personas
-              </div>
-              <div class="row">
-                <iron-icon icon="icons:watch-later"></iron-icon>
-                10h00 - 14h00
-              </div>
-            </div>
-        </div>
-        <div class="module">
-            <div class="header">
-                <h3 class="header">API Rest con Express</h3>
-            </div>
-            <div class="info">
-              <div class="row">
-                <iron-icon icon="icons:event"></iron-icon>
-                11/Agosto/2018
-              </div>
-              <div class="row">
-                <iron-icon icon="icons:home"></iron-icon>
-                Cupo: 6 personas
-              </div>
-              <div class="row">
-                <iron-icon icon="icons:watch-later"></iron-icon>
-                10h00 - 14h00
-              </div>
-            </div>
-        </div>
+      </template>
     </div>
 </div>
 
@@ -145,6 +94,12 @@ class CalendarView extends PolymerElement {
     </div>
 </div>
     `;
+  }
+  
+  static get properties() {
+    return {
+      calendar: Array
+    };
   }
 }
 

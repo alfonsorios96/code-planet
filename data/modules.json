@@ -69,7 +69,7 @@
       ]
     },
     {
-      "name": "HTML 5",
+      "name": "Maquetado HTML 5",
       "price": "1,620",
       "duration": "4",
       "courses": [
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "name": "CSS 3",
+      "name": "Diseño web CSS 3",
       "price": "2,430",
       "duration": "6",
       "courses": [
@@ -111,7 +111,7 @@
         "Importación de Archivos (@import)",
         "Anidación de Selectores",
         "Estructuras de archivos para SASS",
-        ""
+        "Generar CSS a partir de SASS"
       ]
     }
   ]

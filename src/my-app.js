@@ -106,7 +106,6 @@ class MyApp extends PolymerElement {
           <img src="images/icon.png" alt="Code Planet">
 </app-toolbar>
           <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-            <a name="home" href="[[rootPath]]home">Inicio</a>
             <a name="courses" href="[[rootPath]]courses">Cursos</a>
             <a name="modules" href="[[rootPath]]modules">Módulos de aprendizaje</a>
             <a name="calendar" href="[[rootPath]]calendar">Calendario y ubicación</a>
@@ -126,12 +125,11 @@ class MyApp extends PolymerElement {
           </app-header>
 
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-            <home-view name="home"></home-view>
             <courses-view name="courses" courses="[[courses]]"></courses-view>
             <modules-view name="modules" modules="[[modules]]"></modules-view>
             <methodology-view name="method"></methodology-view>
             <contact-view name="contact"></contact-view>
-            <calendar-view name="calendar"></calendar-view>
+            <calendar-view name="calendar" calendar="[[calendar]]"></calendar-view>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
         </app-header-layout>
@@ -148,7 +146,8 @@ class MyApp extends PolymerElement {
       },
       routeData: Object,
       courses: Array,
-      modules: Array
+      modules: Array,
+      calendar: Array
     };
   }
   
@@ -163,7 +162,10 @@ class MyApp extends PolymerElement {
     this.getCourses();
     setTimeout(() => {
       this.getModules();
-    }, 1000);
+      setTimeout(() => {
+        this.getCalendar();
+      }, 500);
+    }, 500);
   }
   
   getCourses() {
@@ -172,6 +174,10 @@ class MyApp extends PolymerElement {
   
   getModules() {
     this._generateRequest('data/modules.json');
+  }
+  
+  getCalendar() {
+    this._generateRequest('data/calendar.json');
   }
   
   _generateRequest(url, method = 'GET', body = '') {
@@ -192,6 +198,10 @@ class MyApp extends PolymerElement {
         this.set('modules', null);
         this.set('modules', payload.response);
         break;
+      case 'calendar':
+        this.set('calendar', null);
+        this.set('calendar', payload.response);
+        break;
     }
   }
   
@@ -210,8 +220,8 @@ class MyApp extends PolymerElement {
     // If no page was found in the route data, page will be an empty string.
     // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
-      this.page = 'home';
-    } else if ([ 'home', 'courses', 'contact', 'method', 'calendar', 'modules' ].indexOf(page) !== -1) {
+      this.page = 'courses';
+    } else if ([ 'courses', 'contact', 'method', 'calendar', 'modules' ].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -229,9 +239,6 @@ class MyApp extends PolymerElement {
     // Note: `polymer build` doesn't like string concatenation in the import
     // statement, so break it up.
     switch (page) {
-      case 'home':
-        import('./home-view.js');
-        break;
       case 'courses':
         import('./courses-view.js');
         break;
