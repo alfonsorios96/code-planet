@@ -10,6 +10,7 @@
     "src/calendar-view.js",
     "src/contact-view.js",
     "src/courses-view.js",
+    "src/form-view.js",
     "src/methodology-view.js",
     "src/modules-view.js",
     "src/my-view404.js"

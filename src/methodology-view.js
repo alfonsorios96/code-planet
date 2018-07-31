@@ -13,6 +13,7 @@ class MethodologyView extends PolymerElement {
         .row {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
         .branding {
             padding: 15px;
@@ -23,7 +24,7 @@ class MethodologyView extends PolymerElement {
       <h2>Las clases</h2>
       <div class="card">
       <blackquote>
-          Las clases no son estrictamente presenciales o remotas; las sesiones cuentan con la flexibilidad para acoplarse a tus necesidades.º
+          Las clases no son estrictamente presenciales o remotas; las sesiones cuentan con la flexibilidad para acoplarse a tus necesidades.
         </blackquote>
 </div>
       <div class="row">

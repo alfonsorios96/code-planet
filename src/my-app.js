@@ -109,6 +109,7 @@ class MyApp extends PolymerElement {
             <a name="courses" href="[[rootPath]]courses">Cursos</a>
             <a name="modules" href="[[rootPath]]modules">Módulos de aprendizaje</a>
             <a name="calendar" href="[[rootPath]]calendar">Calendario y ubicación</a>
+            <a name="form" href="[[rootPath]]form">Inscribirse</a>
             <a name="method" href="[[rootPath]]method">Metodología e inversión</a>
             <a name="contact" href="[[rootPath]]contact">¿Quiénes somos?</a>
           </iron-selector>
@@ -129,6 +130,7 @@ class MyApp extends PolymerElement {
             <modules-view name="modules" modules="[[modules]]"></modules-view>
             <methodology-view name="method"></methodology-view>
             <contact-view name="contact"></contact-view>
+            <form-view name="form"></form-view>
             <calendar-view name="calendar" calendar="[[calendar]]"></calendar-view>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
@@ -221,7 +223,7 @@ class MyApp extends PolymerElement {
     // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'courses';
-    } else if ([ 'courses', 'contact', 'method', 'calendar', 'modules' ].indexOf(page) !== -1) {
+    } else if ([ 'courses', 'contact', 'method', 'calendar', 'modules', 'form' ].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -253,6 +255,9 @@ class MyApp extends PolymerElement {
         break;
       case 'calendar':
         import('./calendar-view.js');
+        break;
+      case 'form':
+        import('./form-view.js');
         break;
       case 'view404':
         import('./my-view404.js');
