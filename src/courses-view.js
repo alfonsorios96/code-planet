@@ -58,39 +58,36 @@ class CoursesView extends PolymerElement {
             [[courseIterable.goal]]
         </blackquote>
         <div class="row">
-        <div class="item">
-        <h3>Inversión</h3>
-        <blackquote>
-            <iron-icon icon="icons:credit-card"></iron-icon>
-             [[courseIterable.price]] MXN
-        </blackquote>
-</div>
-<div class="item">
-<h3>Duración total</h3>
-        <blackquote>
-            <iron-icon icon="icons:watch-later"></iron-icon>
-            Curso: [[courseIterable.duration]] horas
-        </blackquote>
-        <blackquote>
-            <iron-icon icon="icons:important-devices"></iron-icon>
-            Mentoría: [[courseIterable.mentoring]] horas
-        </blackquote>
-</div>
-<div class="item">
-<h3>Stack tecnológico</h3>
-        <ul>
-            <template is="dom-repeat" items="[[courseIterable.stack]]" as="label">
-                <span>
-                <iron-icon src="images/[[label.icon]]"></iron-icon>
-</span>
-            </template>
-        </ul>
-</div>
-</div>
-    
-    
-    
-    
+            <div class="item">
+            <h3>Inversión</h3>
+            <blackquote>
+                <iron-icon icon="icons:credit-card"></iron-icon>
+                 [[courseIterable.price]] MXN
+            </blackquote>
+            </div>
+          <div class="item">
+          <h3>Duración total</h3>
+                  <blackquote>
+                      <iron-icon icon="icons:watch-later"></iron-icon>
+                      Curso: [[courseIterable.duration]] horas
+                  </blackquote>
+                  <blackquote>
+                      <iron-icon icon="icons:important-devices"></iron-icon>
+                      Mentoría: [[courseIterable.mentoring]] horas
+                  </blackquote>
+          </div>
+          <div class="item">
+          <h3>Stack tecnológico</h3>
+                  <ul>
+                      <template is="dom-repeat" items="[[courseIterable.stack]]" as="label">
+                          <span>
+                          <iron-icon src="images/[[label.icon]]"></iron-icon>
+          </span>
+                      </template>
+                  </ul>
+          </div>
+        </div>
+        <div class="button" on-click="callToAction">Me interesa este curso</div>
     </div>
 </template>
     `;
@@ -100,6 +97,14 @@ class CoursesView extends PolymerElement {
     return {
       courses: Array
     };
+  }
+  
+  callToAction(event) {
+    this.dispatchEvent(new CustomEvent('call-to-action', {
+      bubbles: true,
+      composed: true,
+      detail: event.model.courseIterable.name
+    }));
   }
 }
 

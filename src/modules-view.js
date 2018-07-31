@@ -63,6 +63,16 @@ class ModulesView extends PolymerElement {
         justify-content: space-between;
         width: 300px;
     }
+    
+    .footer {
+        display: flex;
+        width: 300px;
+    }
+    
+    .button {
+        background-color: #0f9d58;
+        margin-bottom: 5px;
+    }
 </style>
 <h2>Módulos</h2>
 
@@ -100,6 +110,9 @@ class ModulesView extends PolymerElement {
                     </ul>
                 </div>
             </div>
+            <div class="footer">
+                <div class="button" on-click="callToAction">Me interesa este módulo</div>
+            </div>
         </div>
     </template>
 </div>
@@ -111,6 +124,14 @@ class ModulesView extends PolymerElement {
     return {
       modules: Array
     };
+  }
+  
+  callToAction(event) {
+    this.dispatchEvent(new CustomEvent('call-to-action', {
+      bubbles: true,
+      composed: true,
+      detail: event.model.module.name
+    }));
   }
 }
 

@@ -126,12 +126,12 @@ class MyApp extends PolymerElement {
           </app-header>
 
           <iron-pages selected="[[page]]" attr-for-selected="name" role="main">
-            <courses-view name="courses" courses="[[courses]]"></courses-view>
-            <modules-view name="modules" modules="[[modules]]"></modules-view>
+            <courses-view name="courses" courses="[[courses]]" on-call-to-action="callToAction"></courses-view>
+            <modules-view name="modules" modules="[[modules]]" on-call-to-action="callToAction"></modules-view>
             <methodology-view name="method"></methodology-view>
             <contact-view name="contact"></contact-view>
-            <form-view name="form"></form-view>
-            <calendar-view name="calendar" calendar="[[calendar]]"></calendar-view>
+            <form-view name="form" on-info-requested="infoRequested" course-field="[[infoTemp]]"></form-view>
+            <calendar-view name="calendar" calendar="[[calendar]]" on-call-to-action="callToAction"></calendar-view>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
         </app-header-layout>
@@ -149,7 +149,8 @@ class MyApp extends PolymerElement {
       routeData: Object,
       courses: Array,
       modules: Array,
-      calendar: Array
+      calendar: Array,
+      infoTemp: String
     };
   }
   
@@ -180,6 +181,24 @@ class MyApp extends PolymerElement {
   
   getCalendar() {
     this._generateRequest('data/calendar.json');
+  }
+  
+  infoRequested() {
+    this.dispatchEvent(new CustomEvent('toastr-message', {
+      bubbles: true,
+      composed: true,
+      detail: {
+        type: "success",
+        header: 'Solicitar información',
+        body: 'Un asesor te contactará pronto para brindarte información.'
+      }
+    }));
+    this.set('routeData.page', 'courses');
+  }
+  
+  callToAction(event) {
+    this.set('infoTemp', event.detail);
+    this.set('routeData.page', 'form');
   }
   
   _generateRequest(url, method = 'GET', body = '') {
