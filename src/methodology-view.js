@@ -10,20 +10,37 @@ class MethodologyView extends PolymerElement {
           padding: 10px;
         }
         
+        .row {
+            display: flex;
+            justify-content: space-between;
+        }
+        .branding {
+            padding: 15px;
+            width: 400px;
+        }
+        
       </style>
-      
-       <div class="card">
-       <h2>Las clases</h2>
-          <blackquote>
-          <ul>
-              <li>Pueden ser de manera presencial o remota (a través de enlaces Hangouts) y esto se decreta al momento de la inscripción al módulo.</li>
-              <li>La razón por la cuál pueden ser remotas, es la distancia entre el centro de aprendizaje y ustedes.</li>
-              <li>Otra razón es que también comprendemos que para algunos de ustedes la manera de aprendizaje puede ser por medios digitales.</li>
-              <li>Las clases tienen una duración estipulada en su descripción. Ese tiempo no se puede recorrer, así que la puntualidad es un factor importante.</li>
-              <li>Las clases se realizan en días sábados por la mañana a partir de las 10h00. Y cuentas con 30 minutos por módulo de asesoramiento personalizado en el horario que se acuerde con el instructor. Esto último en modalidad remota por Hangouts</li>
-          </ul>
+      <h2>Las clases</h2>
+      <div class="card">
+      <blackquote>
+          Las clases no son estrictamente presenciales o remotas; las sesiones cuentan con la flexibilidad para acoplarse a tus necesidades.º
         </blackquote>
-      </div>
+</div>
+      <div class="row">
+      <div class="card">
+      <h3>Presenciales</h3>
+      <blackquote>
+          <img src="../images/Clase.png" alt="presencial" class="branding">
+        </blackquote>
+</div>
+      <div class="card">
+      <h3>Remotas</h3>
+      <blackquote>
+          <img src="../images/hangouts-meet-intro.png" alt="presencial" class="branding">
+        </blackquote>
+</div>
+</div>
+     
       <div class="card">
       <h2>Evaluación</h2>
       <h3>Formas de evaluación</h3>

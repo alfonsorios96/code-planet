@@ -86,6 +86,24 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
+
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      const config = {
+        apiKey: "AIzaSyADxSsmimBMJwaPJRSl4kRrySC_3AhyAUU",
+        authDomain: "code-planet.firebaseapp.com",
+        databaseURL: "https://code-planet.firebaseio.com",
+        projectId: "code-planet",
+        storageBucket: "code-planet.appspot.com",
+        messagingSenderId: "58488732442"
+      };
+      firebase.initializeApp(config);
+
+      const database = firebase.database();
+      const clients = database.ref('clients/');
+    </script>
+
     <!-- Load your application shell -->
     <script type="module" src="src/my-app.js"></script>
 
