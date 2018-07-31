@@ -8,9 +8,11 @@
   ],
   "fragments": [
     "src/calendar-view.js",
+    "src/candidates-view.js",
     "src/contact-view.js",
     "src/courses-view.js",
     "src/form-view.js",
+    "src/login-view.js",
     "src/methodology-view.js",
     "src/modules-view.js",
     "src/my-view404.js"

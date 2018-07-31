@@ -112,6 +112,14 @@ class MyApp extends PolymerElement {
             <a name="form" href="[[rootPath]]form">Inscribirse</a>
             <a name="method" href="[[rootPath]]method">Metodología e inversión</a>
             <a name="contact" href="[[rootPath]]contact">¿Quiénes somos?</a>
+            <template is="dom-if" if="[[!isLogged]]">
+            <a name="login" href="[[rootPath]]login">Iniciar sesión</a>
+</template>
+            <hr>
+             <template is="dom-if" if="[[isLogged]]">
+            <a name="candidates" href="[[rootPath]]candidates">Lista de candidatos</a>
+            <a name="logout" href="[[rootPath]]logout">Cerrar sesión</a>
+</template>
           </iron-selector>
         </app-drawer>
 
@@ -132,6 +140,8 @@ class MyApp extends PolymerElement {
             <contact-view name="contact"></contact-view>
             <form-view name="form" on-info-requested="infoRequested" course-field="[[infoTemp]]"></form-view>
             <calendar-view name="calendar" calendar="[[calendar]]" on-call-to-action="callToAction"></calendar-view>
+            <candidates-view name="candidates"></candidates-view>
+            <login-view name="login"></login-view>
             <my-view404 name="view404"></my-view404>
           </iron-pages>
         </app-header-layout>
@@ -150,7 +160,15 @@ class MyApp extends PolymerElement {
       courses: Array,
       modules: Array,
       calendar: Array,
-      infoTemp: String
+      infoTemp: String,
+      user: {
+        type: Object,
+        value: null
+      },
+      isLogged: {
+        type: Boolean,
+        value: false
+      }
     };
   }
   
@@ -162,6 +180,7 @@ class MyApp extends PolymerElement {
   
   connectedCallback() {
     super.connectedCallback();
+    this.__oAuthMiddelware();
     this.getCourses();
     setTimeout(() => {
       this.getModules();
@@ -169,6 +188,23 @@ class MyApp extends PolymerElement {
         this.getCalendar();
       }, 500);
     }, 500);
+  }
+  
+  logout() {
+    firebase.auth().signOut().then(() => {
+      this.set('user', null);
+      this.set('routeData.page', 'login');
+    }, error => {
+      this.dispatchEvent(new CustomEvent('toastr-message', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          type: "error",
+          header: 'Logout',
+          body: error
+        }
+      }));
+    });
   }
   
   getCourses() {
@@ -236,13 +272,11 @@ class MyApp extends PolymerElement {
   }
   
   _routePageChanged(page) {
-    // Show the corresponding page according to the route.
-    //
-    // If no page was found in the route data, page will be an empty string.
-    // Show 'view1' in that case. And if the page doesn't exist, show 'view404'.
     if (!page) {
       this.page = 'courses';
-    } else if ([ 'courses', 'contact', 'method', 'calendar', 'modules', 'form' ].indexOf(page) !== -1) {
+    } else if (page === 'logout') {
+      this.logout();
+    } else if ([ 'courses', 'contact', 'method', 'calendar', 'modules', 'form', 'candidates', 'login' ].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
@@ -278,10 +312,35 @@ class MyApp extends PolymerElement {
       case 'form':
         import('./form-view.js');
         break;
+      case 'candidates':
+        import('./candidates-view.js');
+        break;
+      case 'login':
+        import('./login-view.js');
+        break;
       case 'view404':
         import('./my-view404.js');
         break;
     }
+  }
+  
+  __oAuthMiddelware() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.set('user', {
+          name: user.displayName,
+          email: user.email,
+          photoURL: user.photoURL,
+          uid: user.uid,
+          providerData: user.providerData
+        });
+        this.set('isLogged', true);
+        this.set('routeData.page', 'candidates');
+      } else {
+        this.set('user', null);
+        this.set('isLogged', false);
+      }
+    });
   }
 }
 

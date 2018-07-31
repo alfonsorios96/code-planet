@@ -132,6 +132,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       case "success":
         toastr.success(event.detail.body, event.detail.header);
         break;
+      case "warning":
+        toastr.warning(event.detail.body, event.detail.header);
+        break;
+      case "error":
+        toastr.error(event.detail.body, event.detail.header);
+        break;
+      case "info":
+        toastr.info(event.detail.body, event.detail.header);
+        break;
     }
   });
 </script>
