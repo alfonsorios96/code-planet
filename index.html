@@ -83,6 +83,31 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           });
         });
       }
+
+      Notification.requestPermission((status) => {
+        console.log('Notification permission status:', status);
+      });
+
+      const pushNotification = (title, message) => {
+        const options = {
+          body: message,
+          icon: 'icons/icon-144x144.png',
+          vibrate: [100, 50, 100],
+          data: {
+            dateOfArrival: Date.now(),
+            primaryKey: 1
+          }
+        };
+
+        if (Notification.permission === 'granted') {
+          navigator.serviceWorker.getRegistration().then(register => {
+            if (register) {
+              register.showNotification(title, options);
+            }
+          });
+        }
+
+      };
     </script>
 
     <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->

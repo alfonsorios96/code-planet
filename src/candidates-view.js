@@ -57,6 +57,7 @@ class CandidatesView extends PolymerElement {
         candidate.uid = key;
         candidatesList.push(candidate);
       }
+      pushNotification('Nuevo registro', 'Hay una nueva persona interesada en cursos.');
       this.set('candidates', candidatesList);
     });
   }
