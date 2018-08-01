@@ -276,7 +276,13 @@ class MyApp extends PolymerElement {
       this.page = 'courses';
     } else if (page === 'logout') {
       this.logout();
-    } else if ([ 'courses', 'contact', 'method', 'calendar', 'modules', 'form', 'candidates', 'login' ].indexOf(page) !== -1) {
+    } else if (page === 'candidates') {
+      if (this.isLogged === true) {
+        this.page = page;
+      } else {
+        this.page = 'login';
+      }
+    } else if ([ 'courses', 'contact', 'method', 'calendar', 'modules', 'form', 'login' ].indexOf(page) !== -1) {
       this.page = page;
     } else {
       this.page = 'view404';
